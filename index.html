@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SO'HOME CONCEPT – La douche en résine sans joint | Montceau-les-Mines</title>
 <meta name="description" content="Douches en résine sur mesure, sans joint, pour particuliers et professionnels. Aménagements PMR et seniors. SO'HOME CONCEPT, Montceau-les-Mines, Bourgogne.">
+<link rel="canonical" href="https://sohomeconcept.fr/">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="img/favicon-192.png">
@@ -26,7 +27,7 @@
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:72px}
-body{margin:0;background:var(--abyss);color:var(--foam);font-family:var(--text);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{margin:0;background:var(--abyss);color:var(--foam);font-family:var(--text);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;overflow-x:clip}
 img{max-width:100%;display:block}
 a{color:inherit}
 p{margin:0}
@@ -44,11 +45,9 @@ h2{font-size:clamp(2.3rem,6vw,5rem);font-weight:800}
 .btn-dark{background:var(--abyss);color:#fff}
 .btn-dark:hover{background:var(--eau-deep)}
 
-#mockup-note{background:#07130F;color:#93aba2;font-size:.8rem;text-align:center;padding:.4rem 1rem;position:relative;z-index:70}
 
 /* ---------- En-tête ---------- */
 .hdr{position:fixed;left:0;right:0;top:0;z-index:60;transition:background .3s,backdrop-filter .3s}
-#mockup-note + .hdr{top:0}
 .hdr.solid{background:rgba(10,29,26,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
 .hdr .bar{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;height:76px}
 .logo{display:block;flex:none;background:#fff;border-radius:16px;padding:5px 12px;box-shadow:0 6px 20px -8px rgba(0,0,0,.5)}
@@ -69,6 +68,11 @@ h2{font-size:clamp(2.3rem,6vw,5rem);font-weight:800}
 .hero{position:relative;min-height:max(100svh,700px);overflow:hidden;isolation:isolate;background:radial-gradient(120% 90% at 70% 5%,#1E6B5C 0%,#0E2A25 55%,#07130F 100%)}
 .hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 35%;opacity:.5;z-index:-3;animation:drift 26s ease-in-out infinite alternate}
 @keyframes drift{from{transform:scale(1.04)}to{transform:scale(1.14) translate(-1.5%,1%)}}
+.shimmer{position:absolute;inset:-25%;z-index:-2;pointer-events:none;mix-blend-mode:screen;opacity:0;
+  background:radial-gradient(38% 26% at 28% 30%,rgba(74,181,148,.42),transparent 70%),radial-gradient(34% 24% at 72% 62%,rgba(130,226,196,.34),transparent 70%),radial-gradient(30% 22% at 42% 86%,rgba(74,181,148,.3),transparent 70%);
+  animation:shim 11s ease-in-out infinite alternate}
+@keyframes shim{0%{transform:translate3d(-4%,-3%,0) scale(1)}50%{transform:translate3d(5%,4%,0) scale(1.12)}100%{transform:translate3d(-2%,6%,0) scale(1.04)}}
+.hero.nogl .shimmer{opacity:1}
 #water{position:absolute;inset:0;width:100%;height:100%;z-index:-2;mix-blend-mode:screen;pointer-events:none}
 .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(7,19,15,.82) 0%,rgba(7,19,15,.4) 55%,rgba(7,19,15,.1) 100%),linear-gradient(0deg,rgba(7,19,15,.95) 0%,rgba(7,19,15,0) 45%)}
 .hero-in{min-height:max(100svh,700px);display:flex;flex-direction:column;justify-content:flex-end;padding-top:110px;padding-bottom:2rem}
@@ -102,7 +106,7 @@ h2{font-size:clamp(2.3rem,6vw,5rem);font-weight:800}
 
 /* ---------- Joints qui disparaissent ---------- */
 .melt{position:relative;height:360vh;background:#cfd7d5}
-.melt-pin{--p:0;position:sticky;top:0;height:100vh;overflow:hidden}
+.melt-pin{--p:0;position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
 .tiles,.resin{position:absolute;inset:0}
 .tiles{background:
   linear-gradient(90deg,#74817d 0 6px,transparent 6px) 0 0/150px 100%,
@@ -126,7 +130,7 @@ h2{font-size:clamp(2.3rem,6vw,5rem);font-weight:800}
 .edge{position:absolute;top:0;bottom:0;left:calc(var(--p)*130% - 19%);width:8px;margin-left:-4px;background:linear-gradient(90deg,transparent,#fff,transparent);box-shadow:0 0 50px 22px rgba(74,181,148,.6);opacity:0;transition:opacity .3s}
 .melt-pin.live .edge{opacity:1}
 .melt-card{position:absolute;left:clamp(20px,5vw,72px);bottom:clamp(24px,9vh,90px);max-width:min(560px,calc(100% - 40px));padding:1.8rem 2rem;border-radius:22px;background:rgba(10,29,26,.92);color:#fff;box-shadow:0 30px 70px -20px rgba(0,0,0,.6)}
-.msgs{display:grid}
+.msgs{display:grid;align-items:start;transition:height .45s cubic-bezier(.2,.7,.2,1)}
 .msg{grid-area:1/1;opacity:0;transform:translateY(14px);transition:opacity .5s,transform .5s;pointer-events:none}
 .melt-pin[data-ph="0"] .m0,.melt-pin[data-ph="1"] .m1,.melt-pin[data-ph="2"] .m2{opacity:1;transform:none;pointer-events:auto}
 .msg h2{font-size:clamp(1.9rem,4vw,3.1rem)}
@@ -178,15 +182,19 @@ h2{font-size:clamp(2.3rem,6vw,5rem);font-weight:800}
 .more li::before{content:"";position:absolute;left:0;top:.8rem;width:.7rem;height:.4rem;border-left:2px solid var(--eau);border-bottom:2px solid var(--eau);transform:rotate(-45deg)}
 @media(max-width:800px){
   .trio{flex-direction:column;height:auto;min-height:0}
-  .pane{flex:none;height:120px;border-right:0;border-bottom:1px solid rgba(255,255,255,.14);transition:height .8s cubic-bezier(.2,.7,.2,1)}
-  .pane.on{height:560px}
-  .pane:not(.on) h3{writing-mode:horizontal-tb;transform:none;font-size:1.6rem}
-  .pane-b{top:auto}
+  .pane,.pane.on{flex:none;height:auto;display:flex;flex-direction:column;border-right:0;border-bottom:1px solid rgba(255,255,255,.14);cursor:default;transition:none}
+  .pane img,.pane.on img,.pane:not(.on) img{position:relative;inset:auto;width:100%;height:230px;transform:none;filter:none}
+  .pane::after{display:none}
+  .pane-b{position:relative;left:auto;right:auto;bottom:auto;padding:1.7rem 20px 2.4rem;background:var(--basalt-2);text-align:center}
+  .pane h3,.pane:not(.on) h3{writing-mode:horizontal-tb;transform:none;font-size:1.9rem;white-space:normal}
+  .more,.pane.on .more{max-height:none;opacity:1;overflow:visible;margin-inline:auto;transition:none}
+  .more li{padding:.3rem 0}
+  .more li::before{display:none}
 }
 
 /* ---------- Galerie horizontale ---------- */
 .hg{position:relative;background:var(--abyss)}
-.hg-pin{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center}
+.hg-pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:flex;align-items:center}
 .hg-track{display:flex;align-items:center;gap:22px;padding:0 5vw;will-change:transform}
 .hg-title{flex:none;width:min(40vw,520px);padding-right:3vw}
 .hg-title p{margin-top:1.2rem;color:#c3d9d1;max-width:32ch}
@@ -266,9 +274,36 @@ footer a{color:#d3e6df}
 .mbar .btn{flex:1;padding:.8rem}
 @media(max-width:700px){.mbar{display:flex}}
 
+/* ---------- Mobile : recentrage et lisibilité ---------- */
+@media(max-width:800px){
+  .hero::before{background:linear-gradient(180deg,rgba(7,19,15,.55) 0%,rgba(7,19,15,.25) 45%,rgba(7,19,15,.9) 100%)}
+  .shimmer{opacity:1}
+  .hero-in{align-items:center;text-align:center}
+  .hero-grid{justify-items:center;width:100%}
+  .lead,.fn{margin-inline:auto}
+  .call{text-align:center}
+  .call input{text-align:center}
+  .proof{justify-content:center;text-align:center}
+  .melt-card{left:20px;right:20px;max-width:none;bottom:96px;padding:1.5rem 1.3rem;text-align:center}
+  .msg p{margin-inline:auto}
+  .hint{right:auto;left:50%;transform:translateX(-50%);bottom:auto;top:96px;white-space:nowrap}
+  .conf .ctrl,.conf-grid .ctrl{text-align:center}
+  .conf h2,.conf .sub,.fine,.aides h2,.aides .lede,.contact h2,.contact .lead2{margin-inline:auto}
+  .sw{justify-items:center}.sw button{justify-items:center}
+  .hg-title{text-align:center}.hg-title p{margin-inline:auto}
+  .day h2,.day .sub{text-align:center;margin-inline:auto}
+  .aides-grid,.aides dl,.aides .note{text-align:center}
+  .aides dd{margin-inline:auto}
+  .proofs .cols{text-align:center}.proofs p{margin-inline:auto}.towns{justify-content:center}
+  .contact-grid{text-align:center}
+  .cform{text-align:left}.cform .btn{justify-self:center}.fnote{text-align:center}
+  footer .wrap{flex-direction:column;align-items:center;text-align:center}
+}
+@media(max-width:560px){.hdr .bar{justify-content:center}}
+
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .hero-photo,.marq-track,.rain line,.splash{animation:none}
+  .hero-photo,.marq-track,.rain line,.splash,.shimmer{animation:none}
   .ln>span{transform:none;animation:none}
   .lead,.call,.fn{opacity:1;animation:none}
   .pane,.pane img,.more{transition:none}
@@ -276,8 +311,6 @@ footer a{color:#d3e6df}
 </style>
 </head>
 <body>
-
-<div id="mockup-note">Maquette de refonte proposée à SO'HOME CONCEPT. Textes issus du site actuel, photos de chantiers SO'HOME CONCEPT.</div>
 
 <header class="hdr" id="hdr">
   <div class="wrap bar">
@@ -302,6 +335,7 @@ footer a{color:#d3e6df}
 <section class="hero">
   <img class="hero-photo" src="img/douche-2.jpg" alt="" fetchpriority="high">
   <canvas id="water" aria-hidden="true"></canvas>
+  <div class="shimmer" aria-hidden="true"></div>
   <div class="wrap hero-in">
     <div class="hero-grid">
       <div>
@@ -311,7 +345,7 @@ footer a{color:#d3e6df}
           <span class="ln" aria-hidden="true"><span style="--i:2">sans un</span></span>
           <span class="ln" aria-hidden="true"><span style="--i:3">seul joint.<sup class="ast">*</sup></span></span>
         </h1>
-        <p class="lead">Coulée d'un seul tenant, sur mesure, posée par SO'HOME CONCEPT. Pour votre salle de bain, votre établissement, ou pour rester chez vous en sécurité.</p>
+        <p class="lead">Sur mesure, posée par SO'HOME CONCEPT. Pour votre salle de bain, votre établissement, ou pour rester chez vous en sécurité.</p>
         <p class="fn">* Surface de douche sans joint de carrelage. Seuls subsistent les joints périphériques en silicone (raccords avec les murs et la paroi vitrée).</p>
       </div>
       <aside class="call" aria-label="Demande de rappel">
@@ -322,6 +356,7 @@ footer a{color:#d3e6df}
           <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
           <button class="btn btn-eau" type="submit" id="callbtn">Être rappelé</button>
           <p id="callnote" role="status" aria-live="polite" style="margin:.3rem 0 0;font-size:.9rem"></p>
+          <p style="margin:.5rem 0 0;font-size:.76rem;line-height:1.4;opacity:.75">En envoyant votre numéro, vous acceptez d'être rappelé(e) par SO'HOME CONCEPT au sujet de votre projet. <a href="politique-de-confidentialite.html" style="text-decoration:underline">Données personnelles</a></p>
         </form>
       </aside>
     </div>
@@ -351,7 +386,7 @@ footer a{color:#d3e6df}
     <div class="melt-card">
       <div class="msgs">
         <div class="msg m0"><h2>Ces lignes, c'est là que tout s'installe.</h2><p>Eau stagnante, calcaire, moisissures : chaque joint est un point faible.</p></div>
-        <div class="msg m1"><h2>Maintenant, on les efface.</h2><p>La résine est coulée d'un seul tenant, du sol aux parois.</p></div>
+        <div class="msg m1"><h2>Maintenant, on les efface.</h2><p>La résine recouvre le sol et les parois, sans joint de carrelage.</p></div>
         <div class="msg m2"><h2>Une seule surface. Zéro joint*.</h2><p>Plus rien à frotter, plus rien où s'accrocher.</p><p class="fn2">* Hors joints périphériques en silicone (murs, paroi vitrée).</p><a class="btn btn-eau" href="#conf">Choisir ma teinte</a></div>
       </div>
     </div>
@@ -394,7 +429,7 @@ footer a{color:#d3e6df}
     </div>
     <div class="ctrl">
       <h2>Votre douche, votre teinte.</h2>
-      <p class="sub">Un sol et des parois d'un seul tenant, dans la teinte qui va avec votre salle de bain.</p>
+      <p class="sub">Sol et parois en résine, dans la teinte qui va avec votre salle de bain.</p>
       <h3>Teinte : <span id="tname">Blanc</span></h3>
       <div class="sw" id="sw"></div>
       <p class="fine">Aperçu indicatif. Les teintes disponibles se choisissent avec nous sur échantillons.</p>
@@ -481,13 +516,12 @@ footer a{color:#d3e6df}
 <section class="aides" id="aides">
   <div class="wrap aides-grid">
     <div>
-      <div class="big" aria-hidden="true"><span id="count">0</span><small>%</small></div>
-      <h2>Jusqu'à 70 % des travaux pris en charge.</h2>
-      <p class="lede">MaPrimeAdapt' finance 50 % ou 70 % des travaux d'adaptation selon vos ressources, dans la limite de 22 000 € HT. Nous vous aidons à monter votre dossier.</p>
+      <h2>Des aides existent pour financer votre projet.</h2>
+      <p class="lede">Selon votre âge, votre situation et vos ressources, plusieurs dispositifs peuvent prendre en charge une partie des travaux d'adaptation. Nous vous aidons à monter votre dossier.</p>
     </div>
     <dl>
       <dt>MaPrimeAdapt'</dt>
-      <dd>Pour les personnes âgées ou en situation de handicap, sous conditions de ressources. La demande se fait avant le début des travaux.</dd>
+      <dd>Pour les personnes âgées ou en situation de handicap, sous conditions d'âge ou de handicap, de ressources et de logement. La demande se fait avant le début des travaux.</dd>
       <dt>Anah</dt>
       <dd>Propriétaires, et locataires avec l'accord du bailleur, sous conditions.</dd>
       <dt>Caisse de retraite</dt>
@@ -507,7 +541,6 @@ footer a{color:#d3e6df}
     <div>
       <h2>Un savoir-faire reconnu.</h2>
       <p>SO'HOME CONCEPT a été récompensée à la cérémonie des Trophées de l'inclusion 2024 et mise en lumière par l'Agefiph.</p>
-      <a class="more-l" href="https://sohomeconcept.fr/2024/12/10/sohome-concept-recompensee-a-la-ceremonie-des-trophees-de-linclusion-2024/">Lire l'article sur les Trophées</a>
     </div>
     <div>
       <h2>Montceau-les-Mines, et toute la Bourgogne.</h2>
@@ -546,7 +579,8 @@ footer a{color:#d3e6df}
       </label>
       <label>Message<textarea name="msg" id="fmsg" placeholder="Ville, type de logement ou de local, souhaits..."></textarea></label>
       <button class="btn btn-dark" type="submit">Envoyer ma demande</button>
-      <p class="fnote" id="fnote">Votre messagerie s'ouvre avec la demande déjà rédigée.</p>
+      <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <p class="fnote" id="fnote">Nous vous rappelons rapidement. Vos données servent uniquement à répondre à votre demande (<a href="politique-de-confidentialite.html" style="text-decoration:underline">en savoir plus</a>).</p>
     </form>
   </div>
 </section>
@@ -557,7 +591,7 @@ footer a{color:#d3e6df}
   <div class="wrap">
     <div><span class="logo-foot"><img src="img/logo.png" alt="SO'HOME CONCEPT" width="101" height="44"></span><br>10 impasse du Vieux Bois du Verne, 71300 Montceau-les-Mines</div>
     <div><a href="tel:+33769435402">07 69 43 54 02</a><br><a href="mailto:fichet.direction@sohomeconcept.fr">fichet.direction@sohomeconcept.fr</a></div>
-    <div><a href="https://sohomeconcept.fr/politique-de-confidentialite/">Mentions légales et confidentialité</a></div>
+    <div><a href="mentions-legales.html">Mentions légales</a><br><a href="politique-de-confidentialite.html">Politique de confidentialité</a></div>
   </div>
 </footer>
 
@@ -574,11 +608,13 @@ function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
 (function(){
   var c=document.getElementById('water');
   var gl=c.getContext('webgl',{antialias:false,alpha:false});
-  if(!gl){c.style.display='none';return;}
+  var hero=c.parentNode;
+  function nogl(){c.style.display='none';hero.classList.add('nogl')}
+  if(!gl){nogl();return;}
   var vs='attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
   var fs=[
    '#ifdef GL_FRAGMENT_PRECISION_HIGH','precision highp float;','#else','precision mediump float;','#endif',
-   'uniform vec2 R;uniform float T;uniform vec3 M;',
+   'uniform vec2 R;uniform float T;uniform vec3 M;uniform float Z;uniform float G;',
    'float caustic(vec2 uv){',
    ' vec2 p=mod(uv*6.28318530718,6.28318530718)-250.0;vec2 i=p;float c=1.0;float inten=.005;',
    ' for(int n=0;n<4;n++){float t=T*(1.0-(3.5/float(n+1)));',
@@ -589,21 +625,21 @@ function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
    ' vec2 uv=gl_FragCoord.xy/R;float asp=R.x/R.y;vec2 q=uv;q.x*=asp;',
    ' vec2 m=M.xy;m.x*=asp;vec2 d=q-m;float dist=length(d);',
    ' q+=normalize(d+vec2(1e-4))*sin(dist*38.0-T*5.0)*exp(-dist*5.0)*M.z*0.05;',
-   ' float a=caustic(q*0.55+vec2(T*0.01,0.0));',
-   ' float b=caustic(q*0.9-vec2(0.0,T*0.012)+3.1);',
+   ' float a=caustic(q*0.55*Z+vec2(T*0.01,0.0));',
+   ' float b=caustic(q*0.9*Z-vec2(0.0,T*0.012)+3.1);',
    ' float v=clamp(a*1.1+b*0.6,0.0,1.0);',
-   ' gl_FragColor=vec4(vec3(.29,.71,.58)*v*1.15,1.0);}'
+   ' gl_FragColor=vec4(vec3(.29,.71,.58)*v*1.15*G,1.0);}'
   ].join('\n');
   function sh(t,s){var o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);return gl.getShaderParameter(o,gl.COMPILE_STATUS)?o:null}
   var v=sh(gl.VERTEX_SHADER,vs),f=sh(gl.FRAGMENT_SHADER,fs);
-  if(!v||!f){c.style.display='none';return;}
+  if(!v||!f){nogl();return;}
   var pr=gl.createProgram();gl.attachShader(pr,v);gl.attachShader(pr,f);gl.linkProgram(pr);
-  if(!gl.getProgramParameter(pr,gl.LINK_STATUS)){c.style.display='none';return;}
+  if(!gl.getProgramParameter(pr,gl.LINK_STATUS)){nogl();return;}
   gl.useProgram(pr);
   var b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);
   gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
   var loc=gl.getAttribLocation(pr,'p');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
-  var uR=gl.getUniformLocation(pr,'R'),uT=gl.getUniformLocation(pr,'T'),uM=gl.getUniformLocation(pr,'M');
+  var uR=gl.getUniformLocation(pr,'R'),uT=gl.getUniformLocation(pr,'T'),uM=gl.getUniformLocation(pr,'M'),uZ=gl.getUniformLocation(pr,'Z'),uG=gl.getUniformLocation(pr,'G');
   var mx=.7,my=.4,mz=0,visible=true,t0=performance.now();
   function size(){
     var s=Math.min(window.devicePixelRatio||1,1.25)*0.6;
@@ -611,7 +647,7 @@ function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
     gl.viewport(0,0,c.width,c.height);
   }
   size();window.addEventListener('resize',size);
-  var hero=c.parentNode;
+  c.addEventListener('webglcontextlost',function(e){e.preventDefault();nogl()});
   hero.addEventListener('pointermove',function(e){
     var r=hero.getBoundingClientRect();
     mx=(e.clientX-r.left)/r.width;my=1-(e.clientY-r.top)/r.height;mz=1;
@@ -620,7 +656,8 @@ function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
   function draw(now){
     var t=((now-t0)/1000)*0.5+23.0;
     mz*=0.965;
-    gl.uniform2f(uR,c.width,c.height);gl.uniform1f(uT,t);gl.uniform3f(uM,mx,my,mz);
+    var port=c.clientHeight>c.clientWidth;
+    gl.uniform2f(uR,c.width,c.height);gl.uniform1f(uT,t);gl.uniform3f(uM,mx,my,mz);gl.uniform1f(uZ,port?1.9:1.0);gl.uniform1f(uG,port?1.55:1.0);
     gl.drawArrays(gl.TRIANGLES,0,3);
   }
   function loop(now){ if(visible)draw(now); requestAnimationFrame(loop); }
@@ -640,6 +677,12 @@ function updateMelt(){
   pin.classList.toggle('live',e>.01&&e<.99);
   pin.dataset.ph=e<.06?'0':(e<.92?'1':'2');
   hint.style.opacity=p<.04?1:0;
+  fitMsgs();
+}
+var msgsEl=document.querySelector('.msgs'),lastPh=null;
+function fitMsgs(){
+  var ph=pin.dataset.ph;if(ph===lastPh)return;lastPh=ph;
+  var m=msgsEl.querySelector('.m'+ph);if(m)msgsEl.style.height=m.scrollHeight+'px';
 }
 
 /* ---------- Galerie horizontale ---------- */
@@ -657,22 +700,12 @@ function updateHG(){
   bar.style.width=(p*100).toFixed(1)+'%';
 }
 window.addEventListener('load',function(){sizeHG();onScroll()});
-window.addEventListener('resize',function(){sizeHG();onScroll()});
+window.addEventListener('resize',function(){lastPh=null;sizeHG();onScroll()});
 track.querySelectorAll('img').forEach(function(i){i.addEventListener('load',function(){sizeHG()})});
-
-/* ---------- Compteur aides ---------- */
-var counted=false,countEl=document.getElementById('count');
-function runCount(){
-  if(counted)return;counted=true;
-  if(RM){countEl.textContent='70';return;}
-  var s=performance.now();
-  (function f(n){var k=clamp((n-s)/1600,0,1),e=1-Math.pow(1-k,3);countEl.textContent=Math.round(e*70);if(k<1)requestAnimationFrame(f)})(s);
-}
-new IntersectionObserver(function(en){if(en[0].isIntersecting)runCount()},{threshold:.35}).observe(document.getElementById('aides'));
 
 /* ---------- Scroll unique ---------- */
 var tick=false;
-var noteH=(document.getElementById('mockup-note')||{offsetHeight:0}).offsetHeight;
+var noteH=0;
 function onScroll(){
   hdr.style.top=Math.max(0,noteH-window.scrollY)+'px';
   hdr.classList.toggle('solid',window.scrollY>60);
@@ -746,9 +779,21 @@ document.getElementById('callform').addEventListener('submit',function(e){
   });
 });
 document.getElementById('form').addEventListener('submit',function(e){
-  e.preventDefault();var f=e.target,n=f.nom.value.trim(),t=f.tel.value.trim();
-  if(!n||!t){document.getElementById('fnote').textContent="Indiquez votre nom et votre téléphone pour que nous puissions vous rappeler.";return;}
-  mail('Demande de devis : '+f.type.value,'Nom : '+n+'\nTéléphone : '+t+'\nProjet : '+f.type.value+'\n\n'+f.msg.value);
+  e.preventDefault();var f=e.target,fn=document.getElementById('fnote'),n=f.nom.value.trim(),t=f.tel.value.trim(),sb=f.querySelector('button[type=submit]');
+  if(f._honey&&f._honey.value)return;
+  var d=t.replace(/\D/g,'');
+  if(!n||d.length<9||d.length>13||!/^[+0-9 .()-]+$/.test(t)){fn.style.color='#b3261e';fn.textContent="Indiquez votre nom et un numéro de téléphone valide pour que nous puissions vous rappeler.";return;}
+  sb.disabled=true;sb.textContent='Envoi…';fn.style.color='';
+  fetch(LEAD_URL,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({_subject:'Demande de devis : '+f.type.value+' ('+n+')',_template:'table',_captcha:'false',
+      'Nom':n,'Téléphone':t,'Projet':f.type.value,'Message':f.msg.value,'Envoyée le':new Date().toLocaleString('fr-FR')})})
+  .then(function(r){return r.json().then(function(j){if(!r.ok||String(j.success)==='false')throw new Error(j.message||r.status);return j})})
+  .then(function(){f.reset();sb.textContent='Demande envoyée';fn.style.color='#137A6E';fn.textContent='Merci '+n+', nous vous rappelons au '+t+' dès que possible.';})
+  .catch(function(){
+    sb.disabled=false;sb.textContent='Envoyer ma demande';fn.style.color='#b3261e';
+    fn.innerHTML='L\'envoi n\'a pas abouti. Appelez-nous au <a href="tel:+33769435402" style="font-weight:600">07 69 43 54 02</a> ou <a href="#" id="mfb" style="text-decoration:underline">envoyez la demande par e-mail</a>.';
+    document.getElementById('mfb').addEventListener('click',function(ev){ev.preventDefault();mail('Demande de devis : '+f.type.value,'Nom : '+n+'\nTéléphone : '+t+'\nProjet : '+f.type.value+'\n\n'+f.msg.value)});
+  });
 });
 </script>
 </body>
