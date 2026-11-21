@@ -1,3 +1,6 @@
+Fichier complet, avec les trois modifs intégrées (CSS `.card.feat` + `.tag`, override mobile, nouvelle carte en tête de galerie). J'ai aussi reformulé la légende de `douche-1.jpg` qui faisait doublon. Pense à déposer la photo sous `img/douche-pmr-siege.jpg`.
+
+```html
 <!doctype html>
 <html lang="fr">
 <head>
@@ -205,6 +208,11 @@ h2{font-size:clamp(2.3rem,6vw,5rem);font-weight:800}
 .card img{width:100%;height:100%;object-fit:cover}
 .card figcaption{position:absolute;left:0;right:0;bottom:0;padding:3rem 1.3rem 1.1rem;font-weight:500;background:linear-gradient(0deg,rgba(10,29,26,.9),transparent)}
 .card{margin:0}
+/* carte mise en avant */
+.card.feat{aspect-ratio:3/4;height:78vh;outline:2px solid rgba(74,181,148,.55);outline-offset:-2px;box-shadow:0 30px 70px -20px rgba(0,0,0,.7)}
+.card.feat img{object-position:50% 42%}
+.card.feat figcaption{font-size:1.05rem;padding-top:4rem}
+.card .tag{position:absolute;z-index:2;top:1rem;left:1rem;padding:.35rem .9rem;border-radius:999px;background:var(--eau);color:var(--abyss);font:600 .82rem var(--text)}
 .hg-bar{position:absolute;left:5vw;right:5vw;bottom:5vh;height:3px;background:rgba(255,255,255,.14);border-radius:2px}
 .hg-bar i{display:block;height:100%;width:0;background:var(--eau);border-radius:2px}
 @media(max-width:800px){
@@ -213,6 +221,7 @@ h2{font-size:clamp(2.3rem,6vw,5rem);font-weight:800}
   .hg-track{overflow-x:auto;scroll-snap-type:x mandatory;transform:none!important;padding:1.6rem 20px 0}
   .hg-title{width:100%;padding:0 20px}
   .card{height:56vh;scroll-snap-align:center}
+  .card.feat{height:64vh}
   .hg-bar{display:none}
 }
 
@@ -486,7 +495,12 @@ footer a{color:#d3e6df}
   <div class="hg-pin">
     <div class="hg-track" id="hgTrack">
       <div class="hg-title"><h2>Réalisations.</h2><p>Des chantiers en Saône-et-Loire, dans le Jura et en Côte-d'Or.</p></div>
-<figure class="card"><img src="img/douche-1.jpg" alt="Douche sécurisée avec siège rabattable" loading="lazy"><figcaption>Douche sécurisée avec siège rabattable</figcaption></figure>
+      <figure class="card feat">
+        <span class="tag">Dernière réalisation</span>
+        <img src="img/douche-pmr-siege.jpg" alt="Douche de plain-pied en résine blanche et grise, avec siège relevable, barres d'appui et paroi coulissante">
+        <figcaption>Douche de plain-pied, siège relevable et barres d'appui — Montceau-les-Mines</figcaption>
+      </figure>
+      <figure class="card"><img src="img/douche-1.jpg" alt="Douche sécurisée en angle" loading="lazy"><figcaption>Douche sécurisée en angle</figcaption></figure>
       <figure class="card"><img src="img/douche-2.jpg" alt="Douche de plain-pied avec paroi vitrée" loading="lazy"><figcaption>Douche de plain-pied avec paroi vitrée</figcaption></figure>
       <figure class="card"><img src="img/douche-3.jpg" alt="Douche adaptée dans une petite salle de bain" loading="lazy"><figcaption>Douche adaptée dans une petite salle de bain</figcaption></figure>
       <figure class="card"><img src="img/douche-4.jpg" alt="Douche avec siège et barres d'appui" loading="lazy"><figcaption>Douche avec siège et barres d'appui</figcaption></figure>
@@ -805,3 +819,4 @@ document.getElementById('form').addEventListener('submit',function(e){
 </script>
 </body>
 </html>
+```
